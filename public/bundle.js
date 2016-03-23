@@ -47,13 +47,14 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 
-	var data = [
-	// {id: 1, author: "Pete Hunt", text: "This is one comment"},
-	{ id: 2, author: "Jordan Walke", text: "This is *another* comment" }];
+	var data = [{ id: 1, author: "Pete Hunt", text: "This is one comment" }, { id: 2, author: "Jordan Walke", text: "This is *another* comment" }];
 
-	var Container = React.createClass({
-	  displayName: 'Container',
+	var CommentBox = React.createClass({
+	  displayName: 'CommentBox',
 
+	  getnInitialState: function () {
+	    return { data: [] };
+	  },
 	  render: function () {
 	    return React.createElement(
 	      'div',
@@ -61,41 +62,63 @@
 	      React.createElement(
 	        'h1',
 	        null,
-	        'Comments'
+	        ' Comments '
 	      ),
-	      React.createElement(DerpShot, { author: this.props.author }),
-	      React.createElement(Title, null)
+	      React.createElement(CommentList, { data: this.state.data }),
+	      React.createElement(CommentForm, null)
 	    );
 	  }
 	});
 
-	var DerpShot = React.createClass({
-	  displayName: 'DerpShot',
+	var CommentList = React.createClass({
+	  displayName: 'CommentList',
+
+	  render: function () {
+	    var commentNodes = this.props.data.map(function (comment) {
+	      return React.createElement(
+	        Comment,
+	        { author: comment.author, key: comment.id },
+	        comment.text
+	      );
+	    });
+	    return React.createElement(
+	      'div',
+	      { className: 'commentList' },
+	      commentNodes
+	    );
+	  }
+	});
+
+	var CommentForm = React.createClass({
+	  displayName: 'CommentForm',
 
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      null,
-	      React.createElement(
-	        'p',
-	        null,
-	        this.props.data
-	      )
+	      { className: 'commentForm' },
+	      'Hello, world! I am a CommentForm.'
 	    );
 	  }
 	});
-	var Title = React.createClass({
-	  displayName: 'Title',
+
+	var Comment = React.createClass({
+	  displayName: 'Comment',
 
 	  render: function () {
 	    return React.createElement(
-	      'h1',
-	      { className: 'titleWriter' },
-	      'New Title'
+	      'div',
+	      { className: 'comment' },
+	      React.createElement(
+	        'h2',
+	        { className: 'commentAuthor' },
+	        this.props.author
+	      ),
+	      this.props.children
 	    );
 	  }
 	});
-	ReactDOM.render(React.createElement(Container, { data: data }), document.getElementById('content'));
+
+	ReactDOM.render(React.createElement(CommentBox, { url: '/api/comments' }), document.getElementById('content'));
 
 /***/ },
 /* 1 */
