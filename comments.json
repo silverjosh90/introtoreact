@@ -1,12 +1,23 @@
+
 [
-   {
-     "id": 1,
-     "author": "Pete Hunt",
-     "text": "This is one comment"
-   },
-  {
-    "id": 2,
-    "author": "Jordan Walke",
-    "text": "This is *another* comment"
-  }
+    {
+        "id": 1388534400000,
+        "author": "Pete Hunt",
+        "text": "Hey there!"
+    },
+    {
+        "id": 1420070400000,
+        "author": "Paul O’Shannessy",
+        "text": "React is *great*!"
+    },
+    {
+        "id": 1420070406000,
+        "author": "Paul O’Shannessy",
+        "text": "React is *great*!"
+    },
+    {
+        "id": 1420070408000,
+        "author": "Tooter",
+        "text": "Apocalypse!"
+    }
 ]
