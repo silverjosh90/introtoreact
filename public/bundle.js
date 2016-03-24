@@ -59,7 +59,13 @@
 	        { className: 'commentAuthor' },
 	        this.props.author
 	      ),
-	      this.props.children
+	      React.createElement(
+	        'p',
+	        null,
+	        ' ',
+	        this.props.children,
+	        ' '
+	      )
 	    );
 	  }
 	});

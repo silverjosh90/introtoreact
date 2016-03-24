@@ -8,7 +8,7 @@ var Comment = React.createClass({
         <h2 className="commentAuthor">
           {this.props.author}
         </h2>
-          {this.props.children}
+          <p> {this.props.children} </p>
       </div>
     )
   }
@@ -72,7 +72,7 @@ var CommentList = React.createClass({
     var commentNodes = this.props.data.map(function(comment){
       return (
         <Comment author={comment.author} key={comment.id}>
-        {comment.text}
+          {comment.text}
         </Comment>
       );
     });

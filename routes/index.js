@@ -16,7 +16,7 @@ router.get('/api/comments', function(req,res, next){
       console.log(err)
       process.exit(1);
     }
-    console.log(data);
+    console.log(JSON.parse(data));
     res.json(JSON.parse(data))
   });
 });
