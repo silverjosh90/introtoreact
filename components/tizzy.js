@@ -1,43 +1,95 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
 
-var data = [
-  // {id: 1, author: "Pete Hunt", text: "This is one comment"},
-  {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
-];
 
-var Container = React.createClass({
-render: function() {
-  return (
-  <div className="commentBox">
-      <h1>Comments</h1>
-       <DerpShot author={this.props.author} />
-       <Title />
+tableRows = [{
+  id: 1,
+  status: 'Open',
+  Priority: 'P1',
+  Owner: "Raven",
+  Title: 'App Crashes On Open'
+}]
 
-      </div>
-    );
+
+var BugHeaders = React.createClass({
+  render: function() {
+    return(
+      <thead>
+      <tr>
+      <th> Id </th>
+      <th> Status </th>
+      <th> Priority </th>
+      <th> Owner </th>
+      <th> Title </th>
+      </tr>
+      </thead>
+
+    )
   }
 })
-
-var DerpShot = React.createClass({
+var BugRows = React.createClass({
   render: function() {
-    return (
+    return(
+      <tbody>
+      <tr>
+        <td> {this.props.children} </td>
+        <td> Open </td>
+        <td> P1 </td>
+        <td> Ravan </td>
+        <td> App crashes on open </td>
+      </tr>
+      </tbody>
+    )
+  }
+})
+var BugTable = React.createClass({
+  render: function() {
+    return(
+      <table>
+      <BugHeaders />
+      <BugRows />
+
+      </table>
+
+    )
+  }
+})
+var BugTitle = React.createClass({
+  render: function() {
+    return(
       <div>
-      <p>{this.props.data}</p>
+      <h1> FIND THE BUG </h1>
+      <h3> The smart way to find bugs </h3>
+      </div>
+
+    )
+  }
+})
+var BugForm = React.createClass({
+  render: function() {
+    return(
+      <div>
       </div>
     )
   }
 })
-var Title = React.createClass({
+var BugContainer = React.createClass({
   render: function() {
-    return (
-      <h1 className="titleWriter">
-      New Title
-      </h1>
+    return(
+      <div>
+      <BugTitle />
+      <BugTable rows={this.props.rows} />
+      </div>
     )
   }
 })
+
+
+
+
+
 ReactDOM.render(
-  <Container data={data} />,
+  <BugContainer rows="tableRows" />,
   document.getElementById('content')
-);
+
+)

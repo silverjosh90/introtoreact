@@ -47,55 +47,147 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 
-	var data = [
-	// {id: 1, author: "Pete Hunt", text: "This is one comment"},
-	{ id: 2, author: "Jordan Walke", text: "This is *another* comment" }];
+	tableRows = [{
+	  id: 1,
+	  status: 'Open',
+	  Priority: 'P1',
+	  Owner: "Raven",
+	  Title: 'App Crashes On Open'
+	}];
 
-	var Container = React.createClass({
-	  displayName: 'Container',
+	var BugHeaders = React.createClass({
+	  displayName: 'BugHeaders',
 
 	  render: function () {
 	    return React.createElement(
-	      'div',
-	      { className: 'commentBox' },
+	      'thead',
+	      null,
 	      React.createElement(
-	        'h1',
+	        'tr',
 	        null,
-	        'Comments'
-	      ),
-	      React.createElement(DerpShot, { author: this.props.author }),
-	      React.createElement(Title, null)
+	        React.createElement(
+	          'th',
+	          null,
+	          ' Id '
+	        ),
+	        React.createElement(
+	          'th',
+	          null,
+	          ' Status '
+	        ),
+	        React.createElement(
+	          'th',
+	          null,
+	          ' Priority '
+	        ),
+	        React.createElement(
+	          'th',
+	          null,
+	          ' Owner '
+	        ),
+	        React.createElement(
+	          'th',
+	          null,
+	          ' Title '
+	        )
+	      )
 	    );
 	  }
 	});
+	var BugRows = React.createClass({
+	  displayName: 'BugRows',
 
-	var DerpShot = React.createClass({
-	  displayName: 'DerpShot',
+	  render: function () {
+	    return React.createElement(
+	      'tbody',
+	      null,
+	      React.createElement(
+	        'tr',
+	        null,
+	        React.createElement(
+	          'td',
+	          null,
+	          ' ',
+	          this.props.children,
+	          ' '
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          ' Open '
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          ' P1 '
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          ' Ravan '
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          ' App crashes on open '
+	        )
+	      )
+	    );
+	  }
+	});
+	var BugTable = React.createClass({
+	  displayName: 'BugTable',
+
+	  render: function () {
+	    return React.createElement(
+	      'table',
+	      null,
+	      React.createElement(BugHeaders, null),
+	      React.createElement(BugRows, null)
+	    );
+	  }
+	});
+	var BugTitle = React.createClass({
+	  displayName: 'BugTitle',
 
 	  render: function () {
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
-	        'p',
+	        'h1',
 	        null,
-	        this.props.data
+	        ' FIND THE BUG '
+	      ),
+	      React.createElement(
+	        'h3',
+	        null,
+	        ' The smart way to find bugs '
 	      )
 	    );
 	  }
 	});
-	var Title = React.createClass({
-	  displayName: 'Title',
+	var BugForm = React.createClass({
+	  displayName: 'BugForm',
+
+	  render: function () {
+	    return React.createElement('div', null);
+	  }
+	});
+	var BugContainer = React.createClass({
+	  displayName: 'BugContainer',
 
 	  render: function () {
 	    return React.createElement(
-	      'h1',
-	      { className: 'titleWriter' },
-	      'New Title'
+	      'div',
+	      null,
+	      React.createElement(BugTitle, null),
+	      React.createElement(BugTable, { rows: this.props.rows })
 	    );
 	  }
 	});
-	ReactDOM.render(React.createElement(Container, { data: data }), document.getElementById('content'));
+
+	ReactDOM.render(React.createElement(BugContainer, { rows: 'tableRows' }), document.getElementById('content'));
 
 /***/ },
 /* 1 */
